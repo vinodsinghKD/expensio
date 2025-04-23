@@ -1,4 +1,4 @@
-package me.nafish.fintracker;
+package com.example.expensio;
 
 import io.flutter.embedding.android.FlutterActivity;
 
