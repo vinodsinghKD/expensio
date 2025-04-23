@@ -51,6 +51,6 @@ class AppIcons {
   // 👇 Yeh iconData list ab bas values list hai
   static final List<IconData> iconsList = icons.values.toList();
 
-  // 👇 Yeh string list agar tujhe iconName list chahiye ho UI me
+  // 👇 Yeh string list agar tujhe iconName list chahiye ho UI com
   static final List<String> iconNames = icons.keys.toList();
 }

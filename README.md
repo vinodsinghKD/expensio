@@ -1,17 +1,17 @@
-# FinTracker - Expense Tracker App
+# expensio - Expense Tracker App
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-FinTracker is a Flutter application that helps you track your expenses and manage category budgets. It provides a user-friendly interface to enter and categorize your expenses, giving you insights into your spending habits and helping you stay within your budget.
+expensio is a Flutter application that helps you track your expenses and manage category budgets. It provides a user-friendly interface to enter and categorize your expenses, giving you insights into your spending habits and helping you stay within your budget.
 
-![FinTracker Screenshot](screenshots/fintracker_screenshot.jpg)
+![expensio Screenshot](screenshots/expensio_screenshot.jpg)
 
 
 ## Download
 
-You can download FinTracker from the Google Play Store:
+You can download expensio from the Google Play Store:
 
-[![Google Play Store](https://img.shields.io/badge/Download-Play%20Store-brightgreen.svg)](https://play.google.com/store/apps/details?id=me.nafish.fintracker)
+[![Google Play Store](https://img.shields.io/badge/Download-Play%20Store-brightgreen.svg)](https://play.google.com/store/apps/details?id=com.example.expensio)
 
 ## Features
 
@@ -27,13 +27,13 @@ You can download FinTracker from the Google Play Store:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/nafishahmeddev/fintracker.git
+git clone https://github.com/exampleahmeddev/expensio.git
 ```
 
 2. Change to the project directory:
 
 ```bash
-cd fintracker
+cd expensio
 ```
 
 3. Install dependencies:
@@ -58,7 +58,7 @@ flutter run
 - Set monthly budgets for each category by clicking on the category and entering the desired amount.
 
 ## Roadmap
-Check out our detailed [roadmap](https://github.com/nafishahmeddev/fintracker/blob/master/roadmap.md) for planned features and updates!
+Check out our detailed [roadmap](https://github.com/exampleahmeddev/expensio/blob/master/roadmap.md) for planned features and updates!
 
 ## Contributing
 
@@ -76,4 +76,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or inquiries, please email us at [hello@nafish.me](mailto:hello@nafish.me).
+For any questions or inquiries, please email us at [hello@example.com](mailto:hello@example.com).

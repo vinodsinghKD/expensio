@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:fintracker/helpers/db.helper.dart';
-import 'package:fintracker/model/category.model.dart';
+import 'package:expensio/helpers/db.helper.dart';
+import 'package:expensio/model/category.model.dart';
 import 'package:intl/intl.dart';
 
 class CategoryDao {

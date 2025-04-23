@@ -3,7 +3,7 @@ import "dart:convert";
 import "dart:io";
 import "package:flutter/material.dart";
 import "package:path/path.dart";
-import "package:fintracker/helpers/migrations/migrations.dart";
+import "package:expensio/helpers/migrations/migrations.dart";
 import "package:sqflite_common_ffi/sqflite_ffi.dart";
 
 import 'package:path_provider/path_provider.dart';
@@ -44,11 +44,12 @@ void onCreate(Database database,  int version) async {
     await callback(database);
   }
 }
-
 void onUpgrade(Database database, int oldVersion, int version) async {
-  for(int index = oldVersion; index < version; index++){
-    MigrationCallback callback = migrations[index];
-    await callback(database);
+  for (int index = oldVersion; index < version; index++) {
+    if (index < migrations.length) {
+      MigrationCallback callback = migrations[index];
+      await callback(database);
+    }
   }
 }
 
@@ -120,7 +121,7 @@ Future<dynamic> export() async {
   data["payments"] = payments;
 
   final path = await getExternalDocumentPath();
-  String name = "fintracker-backup-${DateTime.now().millisecondsSinceEpoch}.json";
+  String name = "expensio-backup-${DateTime.now().millisecondsSinceEpoch}.json";
   File file= File('$path/$name');
   await file.writeAsString(jsonEncode(data));
   return file.path;

@@ -1,5 +1,5 @@
-import 'package:fintracker/model/account.model.dart';
-import 'package:fintracker/widgets/currency.dart';
+import 'package:expensio/model/account.model.dart';
+import 'package:expensio/widgets/currency.dart';
 import 'package:flutter/material.dart';
 
 class AccountsSlider extends StatefulWidget{

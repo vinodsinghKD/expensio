@@ -1,11 +1,11 @@
 import 'package:currency_picker/currency_picker.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:fintracker/bloc/cubit/app_cubit.dart';
-import 'package:fintracker/helpers/color.helper.dart';
-import 'package:fintracker/helpers/db.helper.dart';
-import 'package:fintracker/widgets/buttons/button.dart';
-import 'package:fintracker/widgets/dialog/confirm.modal.dart';
-import 'package:fintracker/widgets/dialog/loading_dialog.dart';
+import 'package:expensio/bloc/cubit/app_cubit.dart';
+import 'package:expensio/helpers/color.helper.dart';
+import 'package:expensio/helpers/db.helper.dart';
+import 'package:expensio/widgets/buttons/button.dart';
+import 'package:expensio/widgets/dialog/confirm.modal.dart';
+import 'package:expensio/widgets/dialog/loading_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';

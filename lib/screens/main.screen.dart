@@ -1,9 +1,9 @@
-import 'package:fintracker/bloc/cubit/app_cubit.dart';
-import 'package:fintracker/screens/accounts/accounts.screen.dart';
-import 'package:fintracker/screens/categories/categories.screen.dart';
-import 'package:fintracker/screens/home/home.screen.dart';
-import 'package:fintracker/screens/onboard/onboard_screen.dart';
-import 'package:fintracker/screens/settings/settings.screen.dart';
+import 'package:expensio/bloc/cubit/app_cubit.dart';
+import 'package:expensio/screens/accounts/accounts.screen.dart';
+import 'package:expensio/screens/categories/categories.screen.dart';
+import 'package:expensio/screens/home/home.screen.dart';
+import 'package:expensio/screens/onboard/onboard_screen.dart';
+import 'package:expensio/screens/settings/settings.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';

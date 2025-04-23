@@ -1,5 +1,5 @@
-import 'package:fintracker/model/payment.model.dart';
-import 'package:fintracker/widgets/currency.dart';
+import 'package:expensio/model/payment.model.dart';
+import 'package:expensio/widgets/currency.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../theme/colors.dart';

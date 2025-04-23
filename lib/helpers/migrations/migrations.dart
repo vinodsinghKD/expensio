@@ -7,36 +7,49 @@ double safeDouble(dynamic value){
   }catch(err){
     return 0;
   }
-}
-void v1(Database database) async {
+}Future<void> v1(Database database) async {
   debugPrint("Running first migration....");
-  await database.execute("CREATE TABLE payments ("
-      "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-      "title TEXT NULL, "
-      "description TEXT NULL, "
-      "account INTEGER,"
-      "category INTEGER,"
-      "amount REAL,"
-      "type TEXT,"
-      "datetime DATETIME"
-      ")");
 
-  await database.execute("CREATE TABLE categories ("
-      "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-      "name TEXT,"
-      "icon INTEGER,"
-      "color INTEGER,"
-      "budget REAL NULL, "
-      "type TEXT"
-      ")");
+  // 1️⃣ payments table (unchanged)
+  await database.execute("""
+    CREATE TABLE payments (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NULL,
+      description TEXT NULL,
+      account INTEGER,
+      category INTEGER,
+      amount REAL,
+      type TEXT,
+      datetime DATETIME
+    );
+  """);
 
-  await database.execute("CREATE TABLE accounts ("
-      "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-      "name TEXT,"
-      "holderName TEXT NULL, "
-      "accountNumber TEXT NULL, "
-      "icon INTEGER,"
-      "color INTEGER,"
-      "isDefault INTEGER"
-      ")");
+  // 2️⃣ categories table (added `expense` column)
+  await database.execute("""
+    CREATE TABLE categories (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT,
+      icon INTEGER,
+      color INTEGER,
+      budget REAL NULL,
+      expense REAL   DEFAULT 0.0,
+      type TEXT
+    );
+  """);
+
+  // 3️⃣ accounts table (icon as TEXT + income/expense/balance)
+  await database.execute("""
+    CREATE TABLE accounts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT,
+      holderName TEXT NULL,
+      accountNumber TEXT NULL,
+      icon TEXT,
+      color INTEGER,
+      isDefault INTEGER,
+      income REAL   DEFAULT 0.0,
+      expense REAL  DEFAULT 0.0,
+      balance REAL  DEFAULT 0.0
+    );
+  """);
 }

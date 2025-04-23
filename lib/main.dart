@@ -1,6 +1,6 @@
-import 'package:fintracker/app.dart';
-import 'package:fintracker/bloc/cubit/app_cubit.dart';
-import 'package:fintracker/helpers/db.helper.dart';
+import 'package:expensio/app.dart';
+import 'package:expensio/bloc/cubit/app_cubit.dart';
+import 'package:expensio/helpers/db.helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';

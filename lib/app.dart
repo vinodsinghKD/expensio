@@ -1,5 +1,5 @@
-import 'package:fintracker/bloc/cubit/app_cubit.dart';
-import 'package:fintracker/screens/main.screen.dart';
+import 'package:expensio/bloc/cubit/app_cubit.dart';
+import 'package:expensio/screens/main.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,19 +16,20 @@ class App extends StatelessWidget {
     return  BlocBuilder<AppCubit, AppState>(
         builder: (context, state){
           return MaterialApp(
-            title: 'Fintracker',
+            title: 'expensio',
             theme: ThemeData(
                 useMaterial3: true,
-                brightness: MediaQuery.of(context).platformBrightness,
-                navigationBarTheme: NavigationBarThemeData(
-                  labelTextStyle: WidgetStateProperty.resolveWith((Set<WidgetState> states){
-                    TextStyle style =  const TextStyle(fontWeight: FontWeight.w500, fontSize: 11);
-                    if(states.contains(WidgetState.selected)){
-                      style = style.merge(const TextStyle(fontWeight: FontWeight.w600));
-                    }
-                    return style;
-                  }),
-                )
+              brightness: MediaQuery.of(context).platformBrightness,
+              navigationBarTheme: NavigationBarThemeData(
+                labelTextStyle: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+                  TextStyle style = const TextStyle(fontWeight: FontWeight.w500, fontSize: 11);
+                  if (states.contains(MaterialState.selected)) {
+                    style = style.merge(const TextStyle(fontWeight: FontWeight.w600));
+                  }
+                  return style;
+                }),
+              ),
+
             ),
             home: const MainScreen(),
             localizationsDelegates: const [

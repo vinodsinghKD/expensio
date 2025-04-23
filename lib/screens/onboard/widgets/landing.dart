@@ -1,5 +1,5 @@
-import 'package:fintracker/helpers/color.helper.dart';
-import 'package:fintracker/widgets/buttons/button.dart';
+import 'package:expensio/helpers/color.helper.dart';
+import 'package:expensio/widgets/buttons/button.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatelessWidget{
@@ -16,7 +16,7 @@ class LandingPage extends StatelessWidget{
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Fintracker", style: theme.textTheme.headlineLarge!.apply(color: theme.colorScheme.primary, fontWeightDelta: 1),),
+              Text("expensio", style: theme.textTheme.headlineLarge!.apply(color: theme.colorScheme.primary, fontWeightDelta: 1),),
               const SizedBox(height: 15,),
               Text("Easy method to manage your savings", style: theme.textTheme.headlineMedium!.apply(color: ColorHelper.lighten(theme.colorScheme.primary, 0.1)),),
               const SizedBox(height: 25,),
