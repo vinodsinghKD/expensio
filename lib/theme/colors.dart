@@ -1,112 +1,113 @@
 import 'package:flutter/material.dart';
 
-class ThemeColors{
+class ThemeColors {
   static const MaterialColor success = MaterialColor(_successPrimaryValue, <int, Color>{
-    50: Color(0xFFE2F4EA),
-    100: Color(0xFFB6E4CB),
-    200: Color(0xFF85D2A9),
-    300: Color(0xFF54C087),
-    400: Color(0xFF2FB36D),
+    50: Color(0xFFE6F9EF),
+    100: Color(0xFFB8EFD2),
+    200: Color(0xFF87E3B2),
+    300: Color(0xFF56D792),
+    400: Color(0xFF32CD7A),
     500: Color(_successPrimaryValue),
-    600: Color(0xFF099D4C),
-    700: Color(0xFF079342),
-    800: Color(0xFF058A39),
-    900: Color(0xFF037929),
+    600: Color(0xFF0AA84F),
+    700: Color(0xFF089E45),
+    800: Color(0xFF06953D),
+    900: Color(0xFF03842C),
   });
   static const int _successPrimaryValue = 0xFF0AA553;
 
   static const MaterialColor successAccent = MaterialColor(_successAccentValue, <int, Color>{
-    100: Color(0xFF80FF80),
+    100: Color(0xFF8CFF99),
     200: Color(_successAccentValue),
-    400: Color(0xFF2AFF2A),
-    700: Color(0xFF1AFF1A),
+    400: Color(0xFF33FF66),
+    700: Color(0xFF29FF5C),
   });
   static const int _successAccentValue = 0xFF43FF43;
 
   static const MaterialColor info = MaterialColor(_infoPrimaryValue, <int, Color>{
-    50: Color(0xFFE1EFFA),
-    100: Color(0xFFB3D7F3),
-    200: Color(0xFF81BCEB),
-    300: Color(0xFF4EA1E2),
-    400: Color(0xFF288CDC),
+    50: Color(0xFFE4F2FC),
+    100: Color(0xFFB6DBF7),
+    200: Color(0xFF84C2F1),
+    300: Color(0xFF52A9EB),
+    400: Color(0xFF2D96E6),
     500: Color(_infoPrimaryValue),
-    600: Color(0xFF0270D1),
-    700: Color(0xFF0165CC),
-    800: Color(0xFF015BC6),
-    900: Color(0xFF0148BC),
+    600: Color(0xFF0275CE),
+    700: Color(0xFF016BC8),
+    800: Color(0xFF0161C2),
+    900: Color(0xFF014DB8),
   });
   static const int _infoPrimaryValue = 0xFF0278D6;
 
   static const MaterialColor infoAccent = MaterialColor(_infoAccentValue, <int, Color>{
-    100: Color(0xFF90C9FF),
+    100: Color(0xFFA3D6FF),
     200: Color(_infoAccentValue),
-    400: Color(0xFF3A9FFF),
-    700: Color(0xFF2A98FF),
+    400: Color(0xFF5AB3FF),
+    700: Color(0xFF3AA3FF),
   });
   static const int _infoAccentValue = 0xFF53ACFF;
 
   static const MaterialColor warning = MaterialColor(_warningPrimaryValue, <int, Color>{
-    50: Color(0xFFFDF2E0),
-    100: Color(0xFFFADEB3),
-    200: Color(0xFFF6C980),
-    300: Color(0xFFF2B34D),
-    400: Color(0xFFF0A226),
+    50: Color(0xFFFFF2E0),
+    100: Color(0xFFFFDCB3),
+    200: Color(0xFFFFC580),
+    300: Color(0xFFFFAD4D),
+    400: Color(0xFFFF9C26),
     500: Color(_warningPrimaryValue),
-    600: Color(0xFFEB8A00),
-    700: Color(0xFFE87F00),
-    800: Color(0xFFE57500),
-    900: Color(0xFFE06300),
+    600: Color(0xFFF39100),
+    700: Color(0xFFEA8800),
+    800: Color(0xFFE17E00),
+    900: Color(0xFFD46E00),
   });
   static const int _warningPrimaryValue = 0xFFED9200;
 
   static const MaterialColor warningAccent = MaterialColor(_warningAccentValue, <int, Color>{
-    100: Color(0xFFFFF6F4),
+    100: Color(0xFFFFEDE9),
     200: Color(_warningAccentValue),
-    400: Color(0xFFFFB19D),
-    700: Color(0xFFFFA58E),
+    400: Color(0xFFFFB5A1),
+    700: Color(0xFFFFA393),
   });
   static const int _warningAccentValue = 0xFFFFC5B6;
 
   static const MaterialColor error = MaterialColor(_errorPrimaryValue, <int, Color>{
-    50: Color(0xFFFBE6E5),
-    100: Color(0xFFF6C1BF),
-    200: Color(0xFFF09895),
-    300: Color(0xFFE96E6A),
-    400: Color(0xFFE54F4A),
+    50: Color(0xFFFDE8E7),
+    100: Color(0xFFF9C2C0),
+    200: Color(0xFFF59997),
+    300: Color(0xFFF0706E),
+    400: Color(0xFFEC524F),
     500: Color(_errorPrimaryValue),
-    600: Color(0xFFDC2B25),
-    700: Color(0xFFD8241F),
-    800: Color(0xFFD31E19),
-    900: Color(0xFFCB130F),
+    600: Color(0xFFE2332D),
+    700: Color(0xFFDD2B25),
+    800: Color(0xFFD8231F),
+    900: Color(0xFFCE150F),
   });
   static const int _errorPrimaryValue = 0xFFE0302A;
 
   static const MaterialColor errorAccent = MaterialColor(_errorAccentValue, <int, Color>{
-    100: Color(0xFFFFBFC8),
+    100: Color(0xFFFFC2CB),
     200: Color(_errorAccentValue),
-    400: Color(0xFFFF687E),
-    700: Color(0xFFFF5971),
+    400: Color(0xFFFF6B82),
+    700: Color(0xFFFF5B74),
   });
   static const int _errorAccentValue = 0xFFFF8294;
+
   static const MaterialColor primary = MaterialColor(_primaryPrimaryValue, <int, Color>{
-    50: Color(0xFFEDE3E5),
-    100: Color(0xFFD2B9BF),
-    200: Color(0xFFB48A95),
-    300: Color(0xFF955B6A),
-    400: Color(0xFF7F384A),
+    50: Color(0xFFF2E6E9),
+    100: Color(0xFFDABAC1),
+    200: Color(0xFFBE8B96),
+    300: Color(0xFFA15C6B),
+    400: Color(0xFF8C3A4C),
     500: Color(_primaryPrimaryValue),
-    600: Color(0xFF601225),
-    700: Color(0xFF550F1F),
-    800: Color(0xFF4B0C19),
-    900: Color(0xFF3A060F),
+    600: Color(0xFF5E1324),
+    700: Color(0xFF530F1E),
+    800: Color(0xFF490C18),
+    900: Color(0xFF37060E),
   });
   static const int _primaryPrimaryValue = 0xFF68152A;
 
   static const MaterialColor primaryAccent = MaterialColor(_primaryAccentValue, <int, Color>{
-    100: Color(0xFFFF2484),
+    100: Color(0xFFFF2A89),
     200: Color(_primaryAccentValue),
-    400: Color(0xFFCC005A),
-    700: Color(0xFFBD0053),
+    400: Color(0xFFD1005E),
+    700: Color(0xFFC10057),
   });
   static const int _primaryAccentValue = 0xFFE50065;
 }

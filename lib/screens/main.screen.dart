@@ -34,8 +34,10 @@ class _MainScreenState extends State<MainScreen>{
           body: PageView(
             controller: _controller,
             physics: const NeverScrollableScrollPhysics(),
-            children: const [
-              HomeScreen(),
+            children:  [
+              HomeScreen(
+                onSettingsTap: () => _controller.jumpToPage(3),
+              ),
               AccountsScreen(),
               CategoriesScreen(),
               SettingsScreen()

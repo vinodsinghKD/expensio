@@ -216,139 +216,227 @@ class _PaymentForm extends State<PaymentForm>{
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                                padding: const EdgeInsets.only(left: 15, right: 15, bottom:20),
-                                child: Wrap(
-                                  spacing: 10,
-                                  children: [
-                                    AppButton(
-                                      onPressed: (){
-                                        setState(() {
-                                          _type = PaymentType.credit;
-                                        });
-                                      },
-                                      label: "Income",
-                                      color: Theme.of(context).colorScheme.primary,
-                                      type: _type == PaymentType.credit? AppButtonType.filled: AppButtonType.outlined,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  // Income button
+                                  AnimatedContainer(
+                                    duration: const Duration(milliseconds: 300),
+                                    decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(45),
+                                      boxShadow: [
+                                        if (_type == PaymentType.credit)
+                                          BoxShadow(
+                                            color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+                                            blurRadius: 8,
+                                            offset: const Offset(0, 4),
+                                          ),
+                                      ],
                                     ),
+                                    child: AnimatedScale(
+                                      scale: _type == PaymentType.credit ? 1.05 : 1.0,
+                                      duration: const Duration(milliseconds: 300),
+                                      curve: Curves.easeInOut,
+                                      child: AppButton(
+                                        onPressed: () => setState(() => _type = PaymentType.credit),
+                                        label: "Income",
+                                        color: Theme.of(context).colorScheme.primary,
+                                        type: _type == PaymentType.credit
+                                            ? AppButtonType.filled
+                                            : AppButtonType.outlined,
+                                        borderRadius: BorderRadius.circular(45),
+                                      ),
+                                    ),
+                                  ),
 
-                                    AppButton(
-                                      onPressed: (){
-                                        setState(() {
-                                          _type = PaymentType.debit;
-                                        });
-                                      },
-                                      label: "Expense",
-                                      color: Theme.of(context).colorScheme.primary,
-                                      type: _type == PaymentType.debit? AppButtonType.filled: AppButtonType.outlined,
+                                  const SizedBox(width: 12),
+
+                                  // Expense button
+                                  AnimatedContainer(
+                                    duration: const Duration(milliseconds: 300),
+                                    decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(45),
-                                    )
-                                  ],
-                                )
-                            ),
-
-                            Container(
-                              margin: const EdgeInsets.only(left: 15, right: 15, bottom:25),
-                              child: TextFormField(
-                                decoration:  InputDecoration(
-                                    filled: true,
-                                    hintText: "Title",
-                                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(15),),
-                                    contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 15)
-                                ),
-                                initialValue: _title,
-                                onChanged: (text){
-                                  setState(() {
-                                    _title = text;
-                                  });
-                                },
+                                      boxShadow: [
+                                        if (_type == PaymentType.debit)
+                                          BoxShadow(
+                                            color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+                                            blurRadius: 8,
+                                            offset: const Offset(0, 4),
+                                          ),
+                                      ],
+                                    ),
+                                    child: AnimatedScale(
+                                      scale: _type == PaymentType.debit ? 1.05 : 1.0,
+                                      duration: const Duration(milliseconds: 300),
+                                      curve: Curves.easeInOut,
+                                      child: AppButton(
+                                        onPressed: () => setState(() => _type = PaymentType.debit),
+                                        label: "Expense",
+                                        color: Theme.of(context).colorScheme.primary,
+                                        type: _type == PaymentType.debit
+                                            ? AppButtonType.filled
+                                            : AppButtonType.outlined,
+                                        borderRadius: BorderRadius.circular(45),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
 
-                            Container(
-                              margin: const EdgeInsets.only(left: 15, right: 15, bottom:25),
-                              child: TextFormField(
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                    filled: true,
-                                    hintText: "Description",
-                                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-                                    contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 15)
+// — Title Field —
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                              child: Card(
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                child: TextFormField(
+                                  initialValue: _title,
+                                  onChanged: (text) => setState(() => _title = text),
+                                  decoration: InputDecoration(
+                                    prefixIcon: Padding(
+                                      padding: const EdgeInsets.only(top: 14.0, bottom: 14.0),
+                                      child: Icon(Icons.title, color: Theme.of(context).colorScheme.primary),
+                                    ),
+                                    hintText: 'Title',
+                                    border: InputBorder.none,
+                                    contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 0),
+                                  ),
                                 ),
-                                initialValue: _description,
-                                onChanged: (text){
-                                  setState(() {
-                                    _description = text;
-                                  });
-                                },
                               ),
                             ),
-                            Container(
-                                margin: const EdgeInsets.only(left: 15, right: 15, bottom:25),
+
+// — Description Field —
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                              child: Card(
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                child: TextFormField(
+                                  initialValue: _description,
+                                  maxLines: null,
+                                  onChanged: (text) => setState(() => _description = text),
+                                  decoration: InputDecoration(
+                                    prefixIcon: Padding(
+                                      padding: const EdgeInsets.only(top: 14.0),
+                                      child: Icon(Icons.notes, color: Theme.of(context).colorScheme.primary),
+                                    ),
+                                    hintText: 'Description',
+                                    border: InputBorder.none,
+                                    contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 0),
+                                  ),
+                                ),
+                              ),
+                            ),
+// — Amount Field —
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                              child: Card(
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                                 child: TextFormField(
                                   keyboardType: TextInputType.number,
                                   inputFormatters: <TextInputFormatter>[
                                     FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
                                   ],
+                                  initialValue: _amount == 0 ? '' : _amount.toString(),
+                                  onChanged: (text) => setState(() => _amount = double.parse(text.isEmpty ? '0' : text)),
                                   decoration: InputDecoration(
-                                      filled: true,
-                                      hintText: "0.0",
-                                      prefixIcon: Padding(padding: const EdgeInsets.only(left: 15), child: CurrencyText(null)),
-                                      prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
-                                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-                                      contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 15)
+                                    hintText: '0.0',
+                                    prefixIcon: Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: CurrencyText(null),
+                                    ),
+                                    prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+                                    border: InputBorder.none,
+                                    contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 15),
                                   ),
-                                  initialValue: _amount == 0 ? "" : _amount.toString(),
-                                  onChanged: (String text){
-                                    setState(() {
-                                      _amount = double.parse(text==""? "0":text);
-                                    });
-                                  },
-                                )
+                                ),
+                              ),
                             ),
 
-                            Container(
-                                margin: const EdgeInsets.only(left: 15, right: 15, bottom:25),
-                                child:   Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                        child: InkWell(
-                                            onTap: (){
-                                              chooseDate(context);
-                                            },
-                                            child:Wrap(
-                                              spacing: 10,
-                                              children: [
-                                                Icon(Icons.calendar_today, size: 18, color: Theme.of(context).colorScheme.primary,),
-                                                Text(DateFormat("dd/MM/yyyy").format(_datetime))
-                                              ],
-                                            )
-                                        )
+// — Date & Time Pickers —
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Card(
+                                      elevation: 2,
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                      child: InkWell(
+                                        borderRadius: BorderRadius.circular(15),
+                                        onTap: () => chooseDate(context),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 14),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Icon(Icons.calendar_today, size: 18, color: Theme.of(context).colorScheme.primary),
+                                              const SizedBox(width: 8),
+                                              Text(
+                                                DateFormat('dd/MM/yyyy').format(_datetime),
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
                                     ),
-
-                                    Expanded(
-                                        child: InkWell(
-                                            onTap: (){
-                                              chooseTime(context);
-                                            },
-                                            child:Wrap(
-                                              spacing: 10,
-                                              children: [
-                                                Icon(Icons.watch_later_outlined, size: 18, color: Theme.of(context).colorScheme.primary,),
-                                                Text(DateFormat("hh:mm a").format(_datetime))
-                                              ],
-                                            )
-                                        )
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Expanded(
+                                    child: Card(
+                                      elevation: 2,
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                      child: InkWell(
+                                        borderRadius: BorderRadius.circular(15),
+                                        onTap: () => chooseTime(context),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 14),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Icon(Icons.watch_later_outlined, size: 18, color: Theme.of(context).colorScheme.primary),
+                                              const SizedBox(width: 8),
+                                              Text(
+                                                DateFormat('hh:mm a').format(_datetime),
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ],
-                                )
+                                  ),
+                                ],
+                              ),
                             ),
-
-                            Container(
-                              padding: const EdgeInsets.only(left: 15, bottom: 15),
-                              child: const Text("Select Account", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Select Account',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Container(
+                                    height: 3,
+                                    width: 40,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).colorScheme.primary,
+                                      borderRadius: BorderRadius.circular(1.5),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Container(
                               height: 70,
@@ -359,218 +447,250 @@ class _PaymentForm extends State<PaymentForm>{
                                 padding: const EdgeInsets.only(left: 10, right: 10,),
                                 children:List.generate(_accounts.length +1, (index){
                                   if(index == 0){
-                                    return Container(
-                                      margin: const EdgeInsets.only(right: 5, left: 5),
-                                      width: 190,
-                                      child: MaterialButton(
-                                          minWidth: double.infinity,
-                                          color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(18),
-                                              side: const BorderSide(
-                                                  width: 1.5,
-                                                  color: Colors.transparent
-                                              )
-                                          ),
-                                          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                                          elevation: 0,
-                                          focusElevation: 0,
-                                          hoverElevation: 0,
-                                          highlightElevation: 0,
-                                          disabledElevation: 0,
-                                          onPressed: (){
-                                            showDialog(context: context, builder: (builder)=>const AccountForm());
-                                          },
-                                          child:  SizedBox(
-                                            width: double.infinity,
-                                            child: Row(
-                                              children: [
-                                                CircleAvatar(
-                                                  backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-                                                  child: const Icon(Icons.add, color: Colors.white),
-                                                ),
-                                                const SizedBox(width: 10,),
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                    return AnimatedContainer(
+                                      duration: const Duration(milliseconds: 300),
+                                      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), // ↓ less vertical margin
+                                      width: 160,
+                                      decoration: BoxDecoration(
+                                        color: Theme.of(context).cardColor,
+                                        borderRadius: BorderRadius.circular(18),
+                                        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4, offset: Offset(0, 2))],
+                                      ),
+                                      child: InkWell(
+                                        borderRadius: BorderRadius.circular(18),
+                                        onTap: () => showDialog(context: context, builder: (_) => const AccountForm()),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10), // ↓ less vertical padding
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              CircleAvatar(
+                                                radius: 16,
+                                                backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                                                child: const Icon(Icons.add, color: Colors.white, size: 20),
+                                              ),
+                                              const SizedBox(width: 12),
+                                              Expanded(
+                                                child: Column(
                                                   mainAxisSize: MainAxisSize.min,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    Text("New", style: Theme.of(context).textTheme.bodyMedium?.apply(fontWeightDelta: 2)),
-                                                    Text("Create account", style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,),
+                                                    Text(
+                                                      "New",
+                                                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                                                    ),
+                                                    Text(
+                                                      "Create Account",
+                                                      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
+                                                      overflow: TextOverflow.ellipsis,
+                                                    ),
                                                   ],
-                                                )
-                                              ],
-                                            ),
-                                          )
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                     );
                                   }
                                   Account account = _accounts[index-1];
-                                  return Container(
-                                      margin: const EdgeInsets.only(right: 5, left: 5),
-                                      child: ConstrainedBox(
-                                          constraints:   const BoxConstraints(minWidth: 0,),
-                                          child:  IntrinsicWidth(
-                                            child:MaterialButton(
-                                                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(18),
-                                                    side: BorderSide(
-                                                        width: 1.5,
-                                                        color: _account?.id == account.id ? Theme.of(context).colorScheme.primary : Colors.transparent
-                                                    )
+                                  return AnimatedContainer(
+                                    duration: const Duration(milliseconds: 300),
+                                    margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                    decoration: BoxDecoration(
+                                      color: _account?.id == account.id
+                                          ? account.color.withOpacity(0.2)
+                                          : Theme.of(context).cardColor,
+                                      borderRadius: BorderRadius.circular(18),
+                                      border: Border.all(
+                                        color: _account?.id == account.id
+                                            ? Theme.of(context).colorScheme.primary
+                                            : Colors.transparent,
+                                        width: 2,
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black12,
+                                          blurRadius: _account?.id == account.id ? 8 : 4,
+                                          offset: const Offset(0, 2),
+                                        ),
+                                      ],
+                                    ),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(18),
+                                      onTap: () => setState(() => _account = account),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundColor: account.color.withOpacity(0.2),
+                                            child: Icon(account.icon, color: account.color),
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              if (account.holderName.isNotEmpty)
+                                                Text(
+                                                  account.holderName,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyMedium
+                                                      ?.copyWith(fontWeight: FontWeight.w600),
                                                 ),
-                                                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                                                elevation: 0,
-                                                focusElevation: 0,
-                                                hoverElevation: 0,
-                                                highlightElevation: 0,
-                                                disabledElevation: 0,
-                                                onPressed: (){
-                                                  setState(() {
-                                                    _account = account;
-                                                  });
-                                                },
-                                                child:  SizedBox(
-                                                  width: double.infinity,
-                                                  child: Row(
-                                                    children: [
-                                                      CircleAvatar(
-                                                        backgroundColor: account.color.withOpacity(0.2),
-                                                        child: Icon(account.icon, color: account.color),
-                                                      ),
-                                                      const SizedBox(width: 10,),
-                                                      Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                        mainAxisSize: MainAxisSize.min,
-                                                        children: [
-                                                          Visibility(visible: account.holderName.isNotEmpty,child: Text(account.holderName, style: Theme.of(context).textTheme.bodyMedium?.apply(fontWeightDelta: 2)),),
-                                                          Text(account.name, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis,),
-                                                        ],
-                                                      )
-
-                                                    ],
-                                                  ),
-                                                )
-                                            ),
-                                          )
-                                      )
+                                              Text(
+                                                account.name,
+                                                style: Theme.of(context).textTheme.bodySmall,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   );
                                 }),
                               ),
                             ),
-
-                            Container(
-                              padding: const EdgeInsets.only(left: 15, bottom: 15),
-                              child: const Text("Select Category", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 25, left: 15, right: 15),
-                              width: double.infinity,
-                              child: Wrap(
-                                  spacing: 10,
-                                  runSpacing: 10,
-                                  children: List.generate(_categories.length + 1, (index){
-                                    if(_categories.length == index){
-                                      return ConstrainedBox(
-                                          constraints:   const BoxConstraints(minWidth: 0,),
-                                          child:  IntrinsicWidth(
-                                            child:MaterialButton(
-                                                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(15),
-                                                    side: const BorderSide(
-                                                        width: 1.5,
-                                                        color: Colors.transparent
-                                                    )
-                                                ),
-                                                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                                                elevation: 0,
-                                                focusElevation: 0,
-                                                hoverElevation: 0,
-                                                highlightElevation: 0,
-                                                disabledElevation: 0,
-                                                onPressed: (){
-                                                  showDialog(context: context, builder: (builder)=> const CategoryForm());
-                                                },
-                                                child:  SizedBox(
-                                                  width: double.infinity,
-                                                  child: Row(
-                                                    children: [
-                                                      Icon(Icons.add, color: Theme.of(context).colorScheme.primary,),
-                                                      const SizedBox(width: 10,),
-                                                      Text("New Category", style: Theme.of(context).textTheme.bodyMedium),
-                                                    ],
-                                                  ),
-                                                )
-                                            ),
-                                          )
-                                      );
-                                    }
-                                    Category category = _categories[index];
-                                    return ConstrainedBox(
-                                        constraints:   const BoxConstraints(minWidth: 0,),
-                                        child:  IntrinsicWidth(
-                                            child:MaterialButton(
-                                                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(15),
-                                                    side: BorderSide(
-                                                        width: 1.5,
-                                                        color: _category?.id == category.id ? Theme.of(context).colorScheme.primary : Colors.transparent
-                                                    )
-                                                ),
-                                                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                                                elevation: 0,
-                                                focusElevation: 0,
-                                                hoverElevation: 0,
-                                                highlightElevation: 0,
-                                                disabledElevation: 0,
-                                                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                                onPressed: (){
-                                                  setState(() {
-                                                    _category = category;
-                                                  });
-                                                },
-                                                onLongPress: (){
-                                                  showDialog(context: context, builder: (builder)=>CategoryForm(category: category,));
-                                                },
-                                                child:  SizedBox(
-                                                  width: double.infinity,
-                                                  child: Row(
-                                                    children: [
-                                                      Icon(category.icon, color: category.color),
-                                                      const SizedBox(width: 10,),
-                                                      Text(category.name, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis,),
-                                                    ],
-                                                  ),
-                                                )
-                                            )
-                                        )
-                                    );
-
-                                  })
-
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Select Category',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Container(
+                                    height: 3,
+                                    width: 40,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).colorScheme.primary,
+                                      borderRadius: BorderRadius.circular(1.5),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            )
+                            ),
+
+                            // — Category Selector —
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+                              child: Wrap(
+                                spacing: 12,
+                                runSpacing: 12,
+                                children: [
+                                  // “New Category” card
+                                  AnimatedContainer(
+                                    duration: const Duration(milliseconds: 300),
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).cardColor,
+                                      borderRadius: BorderRadius.circular(15),
+                                      boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
+                                    ),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(15),
+                                      onTap: () => showDialog(context: context, builder: (_) => const CategoryForm()),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Icon(Icons.add, color: Theme.of(context).colorScheme.primary),
+                                          const SizedBox(width: 8),
+                                          Text(
+                                            'New Category',
+                                            style: Theme.of(context).textTheme.bodyMedium,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+
+                                  // Existing categories
+                                  ..._categories.map((cat) {
+                                    final selected = _category?.id == cat.id;
+                                    return AnimatedContainer(
+                                      duration: const Duration(milliseconds: 300),
+                                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                      decoration: BoxDecoration(
+                                        color: selected
+                                            ? cat.color.withOpacity(0.2)
+                                            : Theme.of(context).cardColor,
+                                        borderRadius: BorderRadius.circular(15),
+                                        border: Border.all(
+                                          color: selected ? cat.color : Colors.transparent,
+                                          width: 2,
+                                        ),
+                                        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
+                                      ),
+                                      child: InkWell(
+                                        borderRadius: BorderRadius.circular(15),
+                                        onTap: () => setState(() => _category = cat),
+                                        onLongPress: () => showDialog(context: context, builder: (_) => CategoryForm(category: cat)),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Icon(cat.icon, color: cat.color),
+                                            const SizedBox(width: 8),
+                                            Text(
+                                              cat.name,
+                                              style: Theme.of(context).textTheme.bodyMedium,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  }).toList(),
+                                ],
+                              ),
+                            ),
+
                           ],
                         ) ,
                       )
                   )
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                child: AppButton(
-                  label: "Save Transaction",
-                  height: 50,
-                  labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                  isFullWidth: true,
-                  onPressed: _amount > 0 && _account!=null && _category!=null ? (){
-                    handleSaveTransaction(context);
-                  } : null,
-                  color: Theme.of(context).colorScheme.primary,
+              AnimatedOpacity(
+                // Fade when disabled
+                duration: const Duration(milliseconds: 300),
+                opacity: (_amount > 0 && _account != null && _category != null) ? 1.0 : 0.5,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  child: ElevatedButton(
+                    onPressed: (_amount > 0 && _account != null && _category != null)
+                        ? () => handleSaveTransaction(context)
+                        : null,
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Theme.of(context).colorScheme.primary,
+                      backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      minimumSize: const Size.fromHeight(50),
+                      elevation: 6,
+                      shadowColor: Colors.black26,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                    ),
+                    child: AnimatedDefaultTextStyle(
+                      duration: const Duration(milliseconds: 300),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                      child: const Text('Save Transaction'),
+                    ),
+                  ),
                 ),
-              )
+              ),
+
             ],
           )
       );

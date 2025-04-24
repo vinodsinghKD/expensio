@@ -22,7 +22,7 @@ class _CategoryForm extends State<CategoryForm>{
   Category _category = Category(
       name: "",
       iconCode: Icons.wallet_outlined.codePoint,
-       color: Colors.pink
+      color: Colors.pink
   );
 
 
@@ -84,12 +84,12 @@ class _CategoryForm extends State<CategoryForm>{
                     child: TextFormField(
                       initialValue: _category.name,
                       decoration: InputDecoration(
-                        labelText: 'Name',
-                        hintText: 'Enter Category name',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15)
+                          labelText: 'Name',
+                          hintText: 'Enter Category name',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15)
                       ),
                       onChanged: (String text){
                         setState(() {
@@ -109,12 +109,12 @@ class _CategoryForm extends State<CategoryForm>{
                   FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
                 ],
                 decoration: InputDecoration(
-                    labelText: 'Budget',
-                    hintText: 'Enter budget',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+                  labelText: 'Budget',
+                  hintText: 'Enter budget',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
                   prefixIcon: Padding(padding: const EdgeInsets.only(left: 15), child: CurrencyText(null)),
                   prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
                 ),

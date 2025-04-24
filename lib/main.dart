@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'dart:io';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -26,4 +27,5 @@ void main() async {
       child: const App(),
     ),
   );
+
 }
